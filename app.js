@@ -2,6 +2,7 @@ const express = require('express')
 const morgan = require('morgan')
 
 const routes = require('./routes')
+const { environment } = require('./config/index')
 
 const app = express();
 
@@ -19,7 +20,7 @@ app.use((req, res, next) => {
 
 // log error to database or print to console
 app.use((err, req, res, next) => {
-  if (process.env.NODE_ENV === 'production') {
+  if (environment === 'production') {
     // Log error to databse (not set up yet.)
   } else {
     console.error(err)
@@ -41,7 +42,7 @@ app.use((err, req, res, next) => {
 //generic Server error
 app.use((err, req, res, next) => {
   res.status(err.status || 500)
-  const isProduction = process.env.NODE_ENV === 'production'
+  const isProduction = environment === 'production'
   res.render('error', {
     title: 'Server Error',
     message: isProduction ? null: err.message,
