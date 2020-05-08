@@ -1,0 +1,16 @@
+mixin textField(labelText, fieldName, fieldValue, fieldPlaceholder, isMultiline)
+  div(class='form-group')
+    label(for=fieldName) #{labelText}
+    if !isMultiline
+      input(type='text' id=fieldName name=fieldName value=fieldValue placeholder=fieldPlaceholder, class='form-control')
+    else
+      textarea(id=fieldName name=fieldName value=fieldValue)
+
+
+mixin checkForErrors(errors)
+  if errors
+    div(class='alert alert-danger')
+      p The following error(s) occurred:
+      ul
+        each error in errors
+          li= error
