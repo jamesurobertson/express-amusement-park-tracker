@@ -21,7 +21,7 @@ app.use((req, res, next) => {
 // log error to database or print to console
 app.use((err, req, res, next) => {
   if (environment === 'production') {
-    // Log error to databse (not set up yet.)
+    // Log error to database (not set up yet.)
   } else {
     console.error(err)
   }
