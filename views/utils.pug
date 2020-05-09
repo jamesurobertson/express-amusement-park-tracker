@@ -1,10 +1,11 @@
-mixin textField(labelText, fieldName, fieldValue, fieldPlaceholder, isMultiline)
+
+mixin textField(labelText, fieldName, fieldValue, isMultiline, fieldPlaceholder)
   div(class='form-group')
     label(for=fieldName) #{labelText}
-    if !isMultiline
-      input(type='text' id=fieldName name=fieldName value=fieldValue placeholder=fieldPlaceholder, class='form-control')
+    if isMultiline
+      textarea(id=fieldName name=fieldName value=fieldValue class='form-control')
     else
-      textarea(id=fieldName name=fieldName value=fieldValue)
+      input(type='text' id=fieldName name=fieldName value=fieldValue placeholder=fieldPlaceholder class='form-control')
 
 
 mixin checkForErrors(errors)
